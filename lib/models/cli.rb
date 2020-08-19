@@ -15,9 +15,7 @@ class Cli
         answer=gets.strip
         if answer == "y"
             prompt.select("Choose an option.", %w(Pizzas Drinks Combo-Deals))
-            puts "Show me pizzas"
-            puts "Show me drinks"
-            puts "Show me combo discounts"
+             
         else
             start
         end
