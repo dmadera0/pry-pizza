@@ -1,7 +1,7 @@
 class Cli 
     attr_accessor :user
-    def initialize user=nil
-        @user=nil
+    def initialize 
+        @user=user
     end
 
     def prompt
@@ -9,14 +9,11 @@ class Cli
     end
 
     def start
-        prompt.ask("Welcome to Pry's Pizza! What is your name?")
-        @user=gets.strip
+        @user =prompt.ask("Welcome to Pry's Pizza! What is your name?\n")
         puts "Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?"
         answer=gets.strip
         if answer == "y"
-            puts "Show me pizzas"
-            puts "Show me drinks"
-            puts "Show me combo discounts"
+            prompt.select("What would you like to see?", %w(Pizzas Drinks Combo-Deals))
         else
             start
         end
