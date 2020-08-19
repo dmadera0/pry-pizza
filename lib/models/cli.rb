@@ -9,11 +9,12 @@ class Cli
     end
 
     def start
-        prompt.ask("Welcome to Pry's Pizza! What is your name?")
+        prompt.ask("Welcome to Pry's Pizza! What is your name?", default: ENV["USER"])
         @user=gets.strip
-        puts "Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?"
+        puts("Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?")
         answer=gets.strip
         if answer == "y"
+            prompt.select("Choose an option.", %w(Pizzas Drinks Combo-Deals))
             puts "Show me pizzas"
             puts "Show me drinks"
             puts "Show me combo discounts"
