@@ -1,6 +1,6 @@
 class Cli 
     attr_accessor :user
-    def initialize user=nil
+    def initialize 
         @user=nil
     end
 

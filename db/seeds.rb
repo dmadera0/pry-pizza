@@ -18,8 +18,8 @@ peppa_pig = Pizza.create(name: "Peppa Pig", toppings: "Sausage, Jalepenos, Bell 
 
 corona = Drink.create(name: 'Corona', price: 6)
 budweiser = Drink.create(name: 'Budweiser', price: 6)
-michelobe = Customer.create(name: 'Michelobe', price: 6)
-bud_lite = Customer.create(name: 'Bud Lite', price: 6)
+michelobe = Drink.create(name: 'Michelobe', price: 6)
+bud_lite = Drink.create(name: 'Bud Lite', price: 6)
 
 Meal.create(name:'Margintina Combo', pizza_id: margarita.id, drink_id: corona.id, price: 12)
 Meal.create(name:'College Kid Combo', pizza_id: meat_lovers.id, drink_id: bud_lite.id, price: 14)
