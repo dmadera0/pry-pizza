@@ -46,17 +46,18 @@ class Cli
                 end
                 
              when "Drink List"
-                Drink.pluck(:name).sort
-             when "Combo Items"
-                Meal.pluck(:name).sort
-             end
+                Drink.all.map do |drink|
+                    puts "#{drink.name} - $#{drink.price}"
+                end
+            when "Combo Items"
+                Meal.all.map do |meal|
+                    puts "#{meal.name} - $#{meal.price}"
+                end
              prompt.ask("Would you like to see more Items on the menu: y/n?")
              answer = gets.strip
-             if answer == "y"
              menu(answer)
-             else
-                start
-             end
+            end
+
         end
 
     end
