@@ -12,4 +12,7 @@ gem "rake", "~> 13.0"
 gem "sqlite3", "~> 1.4"
 gem "require_all", "~> 3.0"
 
-gem "tty-prompt"
+gem 'tty-prompt'
+gem 'tty-font'
+gem 'tty-spinner'
+gem 'tty-box'

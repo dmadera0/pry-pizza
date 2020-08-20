@@ -1,4 +1,5 @@
 class Cli 
+
     attr_accessor :user
     def initialize 
         @user=nil
@@ -8,10 +9,25 @@ class Cli
         TTY::Prompt.new
     end
 
+    def banner
+        box = TTY::Box.frame(width: 100, height: 12, border: :thick, align: :left) do
+            "
+             ____                   _           ____    _                     
+            |  _ \\   _ __   _   _  ( )  ___    |  _ \\  (_)  ____  ____   __ _ 
+            | |_) | | '__| | | | | |/  / __|   | |_) | | | |_  / |_  /  / _` |
+            |  __/  | |    | |_| |     \\__ \\   |  __/  | |  / /   / /  | (_| |
+            |_|     |_|     \\__, |     |___/   |_|     |_| /___| /___|  \\__,_|
+                            |___/                                                                                                                                               
+                                                                                                                                                        
+      "end
+          print box
+          puts "\n"
+    end
+
     def start
-        prompt.ask("Welcome to Pry's Pizza! What is your name?", default: ENV["USER"])
-        @user=gets.strip
-        puts("Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?")
+        banner
+        @user= prompt.ask("Welcome to Pry's Pizza! What is your name?\n")
+        puts "Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?"
         answer=gets.strip
         if answer == "y"
             prompt.select("Choose an option.", %w(Pizzas Drinks Combo-Deals))
@@ -35,11 +51,7 @@ class Cli
         Meal.all.map do |meal|
             puts meal.name
         end
-    end
-
-        #menu_options = %w("Show me pizzas", "Show me drinks", "Show me combo discounts")
-        #prompt.select("Please choose an option:", menu_options)
-    
+    end 
 
     def show_pizza
         Pizza.show_all_pizza
@@ -74,12 +86,12 @@ class Cli
     #     puts " Gentle Giant - Margarita and Michelobe"
     # end
 
-#     def order_pizza(user_pizza)
-#         show_pizza.select do |pizza| 
-#             pizza.price: == user_pizza
-# binding.pry
+    #     def order_pizza(user_pizza)
+    #         show_pizza.select do |pizza| 
+    #             pizza.price: == user_pizza
+    # binding.pry
 
-#     end
+    #     end
 
 
 
