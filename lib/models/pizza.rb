@@ -4,7 +4,7 @@ class Pizza < ActiveRecord::Base
 
     def self.show_all_pizza
         Pizza.all.map do |pizza|
-            puts pizza.name
+            pizza(:name)
         end
     end
 

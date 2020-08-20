@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2020_08_19_000659) do
 
   create_table "meals", force: :cascade do |t|
     t.integer "pizza_id"
-    t.integer "customer_id"
+    t.integer "drink_id"
     t.integer "price"
     t.string "name"
-    t.index ["customer_id"], name: "index_meals_on_customer_id"
+    t.index ["drink_id"], name: "index_meals_on_drink_id"
     t.index ["pizza_id"], name: "index_meals_on_pizza_id"
   end
 
