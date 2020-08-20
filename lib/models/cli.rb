@@ -23,18 +23,42 @@ class Cli
           print box
           puts "\n"
     end
-
+    
     def start
-        banner
         @user= prompt.ask("Welcome to Pry's Pizza! What is your name?\n")
         puts "Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?"
         answer=gets.strip
+        menu(answer)
+    end
+
+    def menu(answer)
         if answer == "y"
-            prompt.select("Choose an option.", %w(Pizzas Drinks Combo-Deals))
+           
+            menu_options = ["Pizza List", "Drink List", "Combo Items"]
+           menu_selection = prompt.select("Please Choose an Option:", menu_options)
              
-        else
-            start
+           case menu_selection
+             when "Pizza List"
+                
+                Pizza.all.map do |pizza|
+
+                puts "#{pizza.name} - $#{pizza.price}"
+                end
+                
+             when "Drink List"
+                Drink.pluck(:name).sort
+             when "Combo Items"
+                Meal.pluck(:name).sort
+             end
+             prompt.ask("Would you like to see more Items on the menu: y/n?")
+             answer = gets.strip
+             if answer == "y"
+             menu(answer)
+             else
+                start
+             end
         end
+
     end
 
     def show_pizza
