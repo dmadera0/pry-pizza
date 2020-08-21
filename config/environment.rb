@@ -10,4 +10,5 @@ require 'tty-spinner'
 require 'tty-box'
 
 
+
 ActiveRecord::Base.logger = nil
