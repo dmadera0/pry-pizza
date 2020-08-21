@@ -16,3 +16,4 @@ gem 'tty-prompt'
 gem 'tty-font'
 gem 'tty-spinner'
 gem 'tty-box'
+gem "tty-progressbar"
