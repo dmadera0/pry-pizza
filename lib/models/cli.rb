@@ -34,12 +34,11 @@ class Cli
     def menu(answer)
         if answer == "y"
            
-            menu_options = ["Pizza List", "Drink List", "Combo Items"]
+            menu_options = ["Pizza List", "Drink List", "Combo Items", "Order"]
            menu_selection = prompt.select("Please Choose an Option:", menu_options,)
              
            case menu_selection
              when "Pizza List"
-                
                 Pizza.all.map do |pizza|
                 puts "#{pizza.name} - $#{pizza.price}"
                 end
@@ -63,39 +62,34 @@ class Cli
                 Meal.all.map do |meal|
                     puts "#{meal.name} - $#{meal.price}"
                 end
-            answer2 =prompt.ask("Would you like to see more Items on the menu: y/n?")
+                answer2 =prompt.ask("Would you like to see more Items on the menu: y/n?")
                 if answer2 == "y"
                 menu(answer2)
                 else
                     start
                 end
-                
+            when "Order"
+                order_food
+                puts "Great Choice!!!"
+                end
+                answer3=prompt.ask("would you like to order again?: y/n")
+                if answer3 == "y"
+                    menu(answer3)
+                else
+                    answer3 =="n"
+                    puts "Enjoy your meal!!!"
+                    start
             end
 
         end
 
     end
 
-    def show_pizza
-        Pizza.show_all_pizza
+    
+    def order_food
+        full_menu =["Margarita Pizza", "Hawaiian Pizza", "Meat Lovers Pizza", "Veggie Lovers Pizza", "Popeye Pizza", "Olive You Pizza", "Hot Ass Pizza", "Buffalo Chicken Pizza","Gucci Pizza","Peppa Pig", "Corona", "Budwiser", "Michelobe", "Budlight", "Margintina Combo", "College Kids Combo","Flyin", "Gentle Giant"]
+        prompt_order = prompt.multi_select("What would you like to order?", full_menu)
     end
-
-    def show_all_drinks
-        Drink.all.map do |drink|
-            puts drink.name
-        end
-    end
-
-    def show_all_meal
-        Meal.all.map do |meal|
-            puts meal.name
-        end
-    end 
-
-    def show_pizza
-        Pizza.show_all_pizza
-    end
-
 
     # def show_all_pizzas
     # puts "Maragita"
