@@ -3,18 +3,14 @@ class Cli
     attr_accessor :user
     def initialize 
         @user=nil
+        
+
     end
 
     def prompt
         TTY::Prompt.new
     end
     
-    # def loading_bar
-    #     progress_bar = TTY::ProgressBar.new("Making Order [:bar]", total:30)
-    #     30.times do 
-    #         sleep(0.1)
-    #     end
-    # end
     
     def banner
         box = TTY::Box.frame(width: 100, height: 12, border: :thick, align: :left) do
@@ -40,6 +36,7 @@ class Cli
         
         def menu(answer)
             system "clear"
+            sleep(0.5)
         if answer == "y"
            
             menu_options = ["Pizza List", "Drink List", "Combo Items", "Order"]
@@ -47,6 +44,7 @@ class Cli
              
            case menu_selection
              when "Pizza List"
+                sleep(0.1)
                 Pizza.all.map do |pizza|
                 puts "#{pizza.name} - $#{pizza.price}"
                 end
@@ -57,6 +55,7 @@ class Cli
                     start
                 end
              when "Drink List"
+                sleep(0.1)
                 Drink.all.map do |drink|
                     puts "#{drink.name} - $#{drink.price}"
                 end
@@ -67,6 +66,7 @@ class Cli
                     start
                 end
             when "Combo Items"
+                sleep(0.1)
                 Meal.all.map do |meal|
                     puts "#{meal.name} - $#{meal.price}"
                 end
@@ -77,10 +77,10 @@ class Cli
                     start
                 end
             when "Order"
+                sleep(0.1)
                 order_food
                 puts "Great Choice!!!"
-                # loading_bar.advance(1)
-                # end 
+                @bar
             end
             answer3=prompt.ask("would you like to order again?: y/n")
             if answer3 == "y"
@@ -88,6 +88,7 @@ class Cli
             else
                 answer3 =="n"
                 puts "Enjoy your meal!!!"
+                sleep(0.2)
                 goodby_banner
                     start
             end
@@ -104,7 +105,7 @@ class Cli
              | |  _   / _ \\   / _ \\   / _` | | '_ \\  | | | |  / _ \\ | |
              | |_| | | (_) | | (_) | | (_| | | |_) | | |_| | |  __/ |_|
              \\____|  \\___/   \\___/   \\__,_| |_.__/   \\__, |  \\___| (_)
-                                                          |___/ 
+                                                     |___/ 
                                                                                                                                                                            
             
             "end
