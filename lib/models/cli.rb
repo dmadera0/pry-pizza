@@ -19,26 +19,27 @@ class Cli
     def banner
         box = TTY::Box.frame(width: 100, height: 12, border: :thick, align: :left) do
             "
-            ____                   _           ____    _                     
+             ____                   _           ____    _                       
             |  _ \\   _ __   _   _  ( )  ___    |  _ \\  (_)  ____  ____   __ _ 
-            | |_) | | '__| | | | | |/  / __|   | |_) | | | |_  / |_  /  / _` |
+            | |_) | | '__| | | | | |/  / __|   | |_) | | | |_  / |_  /  / _` |  
             |  __/  | |    | |_| |     \\__ \\   |  __/  | |  / /   / /  | (_| |
             |_|     |_|     \\__, |     |___/   |_|     |_| /___| /___|  \\__,_|
-            |___/                                                                                                                                               
+                            |___/                                                                                                                                               
             
             "end
             print box
             puts "\n"
-    end
-    
-    def start
-        @user= prompt.ask("Welcome to Pry's Pizza! What is your name?\n")
-        puts "Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?"
-        answer=gets.strip
-        menu(answer)
-    end
-
-    def menu(answer)
+        end
+        
+        def start
+            @user= prompt.ask("Welcome to Pry's Pizza! What is your name?\n")
+            puts "Hey #{@user}! Nice to meet you! Would you like to see our Menu y/n?"
+            answer=gets.strip
+            menu(answer)
+        end
+        
+        def menu(answer)
+            system "clear"
         if answer == "y"
            
             menu_options = ["Pizza List", "Drink List", "Combo Items", "Order"]
@@ -87,11 +88,28 @@ class Cli
             else
                 answer3 =="n"
                 puts "Enjoy your meal!!!"
+                goodby_banner
                     start
             end
 
         end
 
+    end
+
+    def goodby_banner
+        box = TTY::Box.frame(width: 100, height: 12, border: :thick, align: :left) do
+            "
+               ____                       _   _                      _ 
+             / ___|   ___     ___     __| | | |__    _   _    ___  | |
+             | |  _   / _ \\   / _ \\   / _` | | '_ \\  | | | |  / _ \\ | |
+             | |_| | | (_) | | (_) | | (_| | | |_) | | |_| | |  __/ |_|
+             \\____|  \\___/   \\___/   \\__,_| |_.__/   \\__, |  \\___| (_)
+                                                          |___/ 
+                                                                                                                                                                           
+            
+            "end
+            print box
+            puts "\n"
     end
 
     
