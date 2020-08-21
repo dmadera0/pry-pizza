@@ -35,27 +35,41 @@ class Cli
         if answer == "y"
            
             menu_options = ["Pizza List", "Drink List", "Combo Items"]
-           menu_selection = prompt.select("Please Choose an Option:", menu_options)
+           menu_selection = prompt.select("Please Choose an Option:", menu_options,)
              
            case menu_selection
              when "Pizza List"
                 
                 Pizza.all.map do |pizza|
-
                 puts "#{pizza.name} - $#{pizza.price}"
                 end
-                
+                answer2 =prompt.ask("Would you like to see more Items on the menu: y/n?")
+                if answer2 == "y"
+                menu(answer2)
+                else
+                    start
+                end
              when "Drink List"
                 Drink.all.map do |drink|
                     puts "#{drink.name} - $#{drink.price}"
+                end
+                answer2 =prompt.ask("Would you like to see more Items on the menu: y/n?")
+                if answer2 == "y"
+                menu(answer2)
+                else
+                    start
                 end
             when "Combo Items"
                 Meal.all.map do |meal|
                     puts "#{meal.name} - $#{meal.price}"
                 end
-             prompt.ask("Would you like to see more Items on the menu: y/n?")
-             answer = gets.strip
-             menu(answer)
+            answer2 =prompt.ask("Would you like to see more Items on the menu: y/n?")
+                if answer2 == "y"
+                menu(answer2)
+                else
+                    start
+                end
+                
             end
 
         end
