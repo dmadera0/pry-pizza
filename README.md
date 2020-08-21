@@ -11,6 +11,9 @@
 ## General Info
 Pry's Pizza is a CLI application that allows users to enter their name and take a dive into our pizza, drink and combo deal menus, as well as create their own orders! 
 Make all your pizza dreams come true at Pry's Pizza!!!
+
+https://youtu.be/rYMhG_M326o
+
 ## Technologies
 * Ruby - version 2.6.1
 * ActiveRecord - version 6.0
